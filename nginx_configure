@@ -1,0 +1,35 @@
+server {
+    listen 80;
+
+    server_name loc.laravel.com;
+
+    root html/laravel/public;
+    index index.html index.htm index.php;
+
+
+    access_log logs/localhost.laravel-access.log;
+    error_log  logs/locahost.laravel-error.log error;
+
+    charset utf-8;
+
+    location / {
+        try_files \$uri \$uri/ /index.php?\$query_string;
+    }
+
+    location = /favicon.ico { log_not_found off; access_log off; }
+    location = /robots.txt  { log_not_found off; access_log off; }
+
+    error_page 404 /index.php;
+
+    location ~ \.(hh|php)$ {
+        fastcgi_pass  php_processes;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    # Deny .htaccess file access
+    location ~ /\.ht {
+        deny all;
+    }
+}
