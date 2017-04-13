@@ -17,11 +17,33 @@ class UserController extends Controller
         $this->middleware('auth',['only'=>['loginSuccess']]);
     }
 
-    public function index(){
+    public function index(Request $request){
+        $request->url();
         return view('index');
     }
 
     public function loginSuccess(){
         return view('loginSuccess');
+    }
+
+    public function test(){
+        dump(Illuminate\Contracts\Http\Kernel::class);
+        dump(gettype(Request::class));
+//        $result = 1;
+//        $result++;
+//
+//        $one = function() use ($result){
+//            dump($result);
+//        };
+//
+//
+//        $two = function() use (&$result){
+//            dump($result);
+//        };
+////        $one();
+////        $two();
+////echo gettype($result);die;
+//        print_r($one);
+//        print_r($two);die;
     }
 }

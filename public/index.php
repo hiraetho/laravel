@@ -47,6 +47,18 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 |
 */
 
+
+/**
+ * 2017/4/13 大概看了下源码后记录
+ * 引入类加载器，用就好，composer（提供的）
+ * 创建一个application，是继承container的，把类什么的都全部放进去（依赖注入）
+ * 下面的$app->make(.....),就是把括号中的东西（只是字符串）再从创建的application中去取出来，就可以用了，这里是$kennel
+ * 用$kernel中的handle方法（传入通过Illuminate\Http\Request捕获的用户的request请求），然后生成response
+ * 发送请求到客户端$response->send();
+ * 了结$kernel
+ */
+
+
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
 $response = $kernel->handle(

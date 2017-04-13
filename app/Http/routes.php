@@ -25,6 +25,10 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 //登录后跳转路径
 Route::get('/home', 'UserController@loginSuccess');
 
+
+//自己测试
+Route::get('/test', 'UserController@test');
+
 //Route::get('/auth/login', function () {
 //    return view('home');
 //});
