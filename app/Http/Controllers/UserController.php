@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DownloadCategory;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -46,4 +47,12 @@ class UserController extends Controller
 //        print_r($one);
 //        print_r($two);die;
     }
+
+    public function getDownloadCategoryNmaeById()
+    {
+        $dc_model = new DownloadCategory();
+        $dc_model->getName();
+    }
 }
+
+

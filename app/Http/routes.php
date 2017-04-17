@@ -28,6 +28,8 @@ Route::get('/home', 'UserController@loginSuccess');
 
 //自己测试
 Route::get('/test', 'UserController@test');
+Route::get('/getdcname', 'UserController@getDownloadCategoryNmaeById');
+Route::get('/demotest', 'DemoController@demotest');
 
 //Route::get('/auth/login', function () {
 //    return view('home');
